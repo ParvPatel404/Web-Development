@@ -1,0 +1,1070 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NexusGrow — Digital Marketing Agency</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,300&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #080c14;
+    --bg2: #0d1420;
+    --bg3: #111928;
+    --surface: #141e2e;
+    --surface2: #1a2740;
+    --border: rgba(255,255,255,0.07);
+    --border2: rgba(255,255,255,0.13);
+    --text: #f0f4ff;
+    --muted: #7a8aaa;
+    --accent: #00e5ff;
+    --accent2: #7c5cfc;
+    --accent3: #ff6b6b;
+    --green: #00e084;
+    --amber: #ffb547;
+    --font-display: 'Bebas Neue', sans-serif;
+    --font-body: 'DM Sans', sans-serif;
+    --font-mono: 'Space Mono', monospace;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--bg); color: var(--text); font-family: var(--font-body); overflow-x: hidden; }
+
+  /* NAV */
+  nav {
+    position: fixed; top:0; left:0; right:0; z-index:100;
+    display:flex; align-items:center; justify-content:space-between;
+    padding: 1.2rem 4rem;
+    background: rgba(8,12,20,0.85);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border);
+  }
+  .logo { font-family: var(--font-display); font-size: 2rem; letter-spacing:3px; color: var(--accent); }
+  .logo span { color: var(--accent2); }
+  .nav-links { display:flex; gap:2.5rem; list-style:none; }
+  .nav-links a { color: var(--muted); text-decoration:none; font-size:0.875rem; font-weight:500; letter-spacing:0.5px; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--text); }
+  .nav-cta { background: var(--accent2); color: #fff; padding:0.6rem 1.5rem; border-radius:50px; font-size:0.85rem; font-weight:600; cursor:pointer; border:none; transition: opacity 0.2s, transform 0.15s; }
+  .nav-cta:hover { opacity:0.85; transform: translateY(-1px); }
+  .nav-tab { padding: 0.6rem 1.4rem; border-radius:50px; border: 1px solid var(--border2); color: var(--text); background:transparent; font-size:0.85rem; font-weight:500; cursor:pointer; font-family: var(--font-body); transition: all 0.2s; margin-right:0.5rem; }
+  .nav-tab:hover { background: var(--surface); }
+  .nav-tab.active { background: var(--accent); color: #000; border-color: var(--accent); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh; display:flex; flex-direction:column; justify-content:center;
+    padding: 8rem 4rem 4rem;
+    position: relative; overflow:hidden;
+  }
+  .hero-grid-bg {
+    position:absolute; inset:0; z-index:0;
+    background-image:
+      linear-gradient(rgba(0,229,255,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,229,255,0.04) 1px, transparent 1px);
+    background-size: 60px 60px;
+    mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black 40%, transparent 100%);
+  }
+  .hero-glow {
+    position:absolute; width:700px; height:700px; border-radius:50%;
+    background: radial-gradient(circle, rgba(124,92,252,0.18) 0%, transparent 70%);
+    top:-200px; right:-100px; z-index:0; pointer-events:none;
+  }
+  .hero-glow2 {
+    position:absolute; width:500px; height:500px; border-radius:50%;
+    background: radial-gradient(circle, rgba(0,229,255,0.12) 0%, transparent 70%);
+    bottom:-100px; left:-50px; z-index:0; pointer-events:none;
+  }
+  .hero-tag {
+    display:inline-flex; align-items:center; gap:8px;
+    background: rgba(0,229,255,0.08); border: 1px solid rgba(0,229,255,0.25);
+    color: var(--accent); padding: 0.4rem 1rem; border-radius:50px;
+    font-size:0.78rem; font-weight:600; letter-spacing:2px; text-transform:uppercase;
+    margin-bottom:2rem; position:relative; z-index:1; width:fit-content;
+    animation: fadeUp 0.6s ease both;
+  }
+  .hero-tag::before { content:''; width:6px; height:6px; border-radius:50%; background:var(--accent); display:inline-block; animation: pulse 2s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1; transform:scale(1);} 50%{opacity:0.5; transform:scale(0.8);} }
+  .hero h1 {
+    font-family: var(--font-display); font-size: clamp(4rem, 9vw, 9rem);
+    line-height:0.92; letter-spacing:-1px; position:relative; z-index:1;
+    animation: fadeUp 0.7s 0.1s ease both;
+  }
+  .hero h1 .line2 { color: var(--accent); display:block; }
+  .hero h1 .line3 { color: var(--muted); display:block; font-size:0.5em; font-family: var(--font-body); font-weight:300; letter-spacing:2px; text-transform:uppercase; margin-top:0.5rem; }
+  .hero-sub {
+    max-width:520px; color: var(--muted); font-size:1.05rem; line-height:1.75;
+    margin: 2rem 0 3rem; position:relative; z-index:1;
+    animation: fadeUp 0.7s 0.2s ease both;
+  }
+  .hero-actions { display:flex; gap:1rem; flex-wrap:wrap; position:relative; z-index:1; animation: fadeUp 0.7s 0.3s ease both; }
+  .btn-primary {
+    background: linear-gradient(135deg, var(--accent2), #a07cf7);
+    color:#fff; padding:0.85rem 2.2rem; border-radius:50px; font-size:0.95rem;
+    font-weight:600; cursor:pointer; border:none; font-family:var(--font-body);
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 0 30px rgba(124,92,252,0.35);
+  }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 40px rgba(124,92,252,0.5); }
+  .btn-outline {
+    background:transparent; color: var(--text); padding:0.85rem 2.2rem; border-radius:50px;
+    font-size:0.95rem; font-weight:500; cursor:pointer; font-family:var(--font-body);
+    border: 1px solid var(--border2); transition: all 0.2s;
+  }
+  .btn-outline:hover { background: var(--surface); }
+  .hero-stats {
+    display:flex; gap:3rem; margin-top:4rem; position:relative; z-index:1;
+    animation: fadeUp 0.7s 0.4s ease both;
+  }
+  .stat-item { }
+  .stat-num { font-family:var(--font-display); font-size:2.5rem; color:var(--text); }
+  .stat-label { font-size:0.78rem; color:var(--muted); text-transform:uppercase; letter-spacing:1.5px; margin-top:2px; }
+
+  @keyframes fadeUp { from{opacity:0; transform:translateY(24px);} to{opacity:1; transform:translateY(0);} }
+
+  /* MARQUEE */
+  .marquee-wrap { background: var(--surface); border-top:1px solid var(--border); border-bottom:1px solid var(--border); padding:1rem 0; overflow:hidden; }
+  .marquee-track { display:flex; gap:3rem; width:max-content; animation: marquee 22s linear infinite; }
+  .marquee-item { font-family:var(--font-display); font-size:1.1rem; letter-spacing:3px; color:var(--muted); white-space:nowrap; display:flex; align-items:center; gap:1.5rem; }
+  .marquee-item::after { content:'◆'; color: var(--accent2); font-size:0.6rem; }
+  @keyframes marquee { from{transform:translateX(0);} to{transform:translateX(-50%);} }
+
+  /* SERVICES */
+  section { padding: 6rem 4rem; }
+  .section-label { font-size:0.75rem; letter-spacing:3px; text-transform:uppercase; color:var(--accent); font-weight:600; margin-bottom:1rem; }
+  .section-title { font-family:var(--font-display); font-size:clamp(2.5rem,5vw,4.5rem); line-height:1; margin-bottom:1rem; }
+  .section-sub { color:var(--muted); max-width:500px; line-height:1.75; font-size:0.95rem; }
+
+  .services-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(300px,1fr)); gap:1.5px; margin-top:4rem; background: var(--border); border-radius:16px; overflow:hidden; }
+  .service-card {
+    background: var(--bg2); padding:2.5rem; cursor:pointer;
+    transition: background 0.3s;
+    position:relative; overflow:hidden;
+  }
+  .service-card:hover { background: var(--surface); }
+  .service-card::before {
+    content:''; position:absolute; top:0; left:0; right:0; height:2px;
+    background: var(--card-color, var(--accent)); transform:scaleX(0); transform-origin:left;
+    transition: transform 0.3s;
+  }
+  .service-card:hover::before { transform:scaleX(1); }
+  .service-icon { font-size:2rem; margin-bottom:1.5rem; }
+  .service-name { font-family:var(--font-display); font-size:1.6rem; letter-spacing:1px; margin-bottom:0.75rem; }
+  .service-desc { color:var(--muted); font-size:0.875rem; line-height:1.7; margin-bottom:1.5rem; }
+  .service-tags { display:flex; flex-wrap:wrap; gap:6px; }
+  .tag { font-size:0.72rem; padding:4px 10px; border-radius:50px; border:1px solid var(--border2); color:var(--muted); font-family:var(--font-mono); }
+  .service-num { position:absolute; bottom:1.5rem; right:1.5rem; font-family:var(--font-display); font-size:4rem; color:rgba(255,255,255,0.04); line-height:1; }
+
+  /* PROCESS */
+  .process-wrap { background: var(--bg2); border-radius:20px; padding:4rem; margin-top:4rem; border: 1px solid var(--border); }
+  .process-steps { display:grid; grid-template-columns:repeat(4,1fr); gap:2rem; margin-top:3rem; position:relative; }
+  .process-steps::before {
+    content:''; position:absolute; top:28px; left:10%; right:10%; height:1px;
+    background: linear-gradient(90deg, transparent, var(--accent2), transparent);
+  }
+  .process-step { text-align:center; }
+  .step-circle {
+    width:56px; height:56px; border-radius:50%; background:var(--bg);
+    border:1px solid var(--accent2); display:flex; align-items:center; justify-content:center;
+    margin:0 auto 1.25rem; font-family:var(--font-mono); font-size:0.85rem; color:var(--accent2);
+    position:relative; z-index:1;
+  }
+  .step-title { font-weight:600; font-size:0.9rem; margin-bottom:0.5rem; }
+  .step-desc { color:var(--muted); font-size:0.8rem; line-height:1.6; }
+
+  /* RESULTS */
+  .results-grid { display:grid; grid-template-columns:1fr 1fr; gap:1.5rem; margin-top:4rem; }
+  .result-card { background: var(--bg2); border: 1px solid var(--border); border-radius:16px; padding:2rem; position:relative; overflow:hidden; }
+  .result-card.featured { background: linear-gradient(135deg, rgba(124,92,252,0.12), rgba(0,229,255,0.06)); border-color: rgba(124,92,252,0.3); grid-column:span 2; }
+  .result-metric { font-family:var(--font-display); font-size:3.5rem; color:var(--accent); }
+  .result-label { color:var(--muted); font-size:0.85rem; margin-bottom:0.5rem; text-transform:uppercase; letter-spacing:1px; font-size:0.72rem; }
+  .result-desc { color:var(--text); font-size:0.9rem; line-height:1.6; margin-top:0.5rem; }
+  .result-badge { display:inline-block; background:rgba(0,224,132,0.12); color:var(--green); border:1px solid rgba(0,224,132,0.25); border-radius:50px; font-size:0.72rem; font-weight:600; padding:3px 10px; margin-top:0.5rem; }
+
+  /* PRICING */
+  .pricing-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; margin-top:4rem; }
+  .plan-card { background: var(--bg2); border:1px solid var(--border); border-radius:20px; padding:2rem; transition: transform 0.3s; }
+  .plan-card:hover { transform: translateY(-4px); }
+  .plan-card.popular { border-color: var(--accent2); background: linear-gradient(160deg, rgba(124,92,252,0.1), var(--bg2)); }
+  .popular-badge { background:var(--accent2); color:#fff; font-size:0.7rem; font-weight:700; padding:3px 12px; border-radius:50px; letter-spacing:1px; text-transform:uppercase; margin-bottom:1.5rem; display:inline-block; }
+  .plan-name { font-family:var(--font-display); font-size:1.8rem; letter-spacing:1px; margin-bottom:0.5rem; }
+  .plan-price { font-family:var(--font-display); font-size:3rem; margin-bottom:0.25rem; }
+  .plan-price span { font-size:1rem; font-family:var(--font-body); color:var(--muted); }
+  .plan-desc { color:var(--muted); font-size:0.82rem; margin-bottom:1.5rem; line-height:1.6; }
+  .plan-features { list-style:none; display:flex; flex-direction:column; gap:0.7rem; margin-bottom:2rem; }
+  .plan-features li { font-size:0.875rem; display:flex; align-items:center; gap:10px; color:var(--muted); }
+  .plan-features li::before { content:''; width:16px; height:16px; border-radius:50%; background:rgba(0,229,255,0.1); border:1px solid rgba(0,229,255,0.3); display:flex; align-items:center; justify-content:center; flex-shrink:0; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M5 8l2 2 4-4' stroke='%2300e5ff' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"); }
+  .plan-features li.yes { color:var(--text); }
+
+  /* DASHBOARD */
+  #dashboard { background: var(--bg); }
+  .dashboard-header { display:flex; align-items:center; justify-content:space-between; margin-bottom:2rem; }
+  .dash-greeting { }
+  .dash-greeting h2 { font-family:var(--font-display); font-size:2.5rem; }
+  .dash-greeting p { color:var(--muted); font-size:0.9rem; margin-top:0.25rem; }
+  .dash-period { display:flex; gap:0.5rem; }
+  .period-btn { padding:0.4rem 1rem; border-radius:50px; font-size:0.8rem; border:1px solid var(--border2); background:transparent; color:var(--muted); cursor:pointer; font-family:var(--font-body); transition:all 0.2s; }
+  .period-btn.active { background:var(--accent); color:#000; border-color:var(--accent); font-weight:600; }
+
+  .kpi-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:1rem; margin-bottom:2rem; }
+  .kpi-card { background:var(--surface); border:1px solid var(--border); border-radius:12px; padding:1.25rem; }
+  .kpi-label { font-size:0.72rem; text-transform:uppercase; letter-spacing:1.5px; color:var(--muted); margin-bottom:0.75rem; }
+  .kpi-value { font-family:var(--font-display); font-size:2rem; margin-bottom:0.25rem; }
+  .kpi-change { font-size:0.78rem; display:flex; align-items:center; gap:4px; }
+  .up { color:var(--green); }
+  .down { color:var(--accent3); }
+
+  .dash-main-grid { display:grid; grid-template-columns:2fr 1fr; gap:1.5rem; margin-bottom:1.5rem; }
+  .chart-card { background:var(--surface); border:1px solid var(--border); border-radius:16px; padding:1.5rem; }
+  .chart-card-header { display:flex; align-items:center; justify-content:space-between; margin-bottom:1.5rem; }
+  .chart-title { font-weight:600; font-size:0.9rem; }
+  .chart-subtitle { color:var(--muted); font-size:0.75rem; margin-top:2px; }
+  .chart-legend { display:flex; gap:1rem; }
+  .legend-dot { width:8px; height:8px; border-radius:50%; display:inline-block; margin-right:4px; }
+  .legend-item { font-size:0.75rem; color:var(--muted); display:flex; align-items:center; }
+
+  /* SVG Chart */
+  .chart-svg { width:100%; height:180px; }
+
+  .activity-list { display:flex; flex-direction:column; gap:1rem; }
+  .activity-item { display:flex; align-items:flex-start; gap:10px; }
+  .activity-dot { width:8px; height:8px; border-radius:50%; margin-top:5px; flex-shrink:0; }
+  .activity-text { font-size:0.82rem; color:var(--text); line-height:1.4; }
+  .activity-time { font-size:0.72rem; color:var(--muted); margin-top:2px; }
+
+  .channel-bars { display:flex; flex-direction:column; gap:1rem; }
+  .channel-row { }
+  .channel-info { display:flex; justify-content:space-between; align-items:center; margin-bottom:6px; }
+  .channel-name { font-size:0.82rem; font-weight:500; }
+  .channel-pct { font-size:0.82rem; color:var(--muted); font-family:var(--font-mono); }
+  .bar-track { height:6px; background:var(--bg); border-radius:50px; overflow:hidden; }
+  .bar-fill { height:100%; border-radius:50px; transition: width 1s cubic-bezier(0.16,1,0.3,1); }
+
+  .goals-list { display:flex; flex-direction:column; gap:1rem; }
+  .goal-item { background:var(--bg2); border:1px solid var(--border); border-radius:10px; padding:1rem; }
+  .goal-header { display:flex; justify-content:space-between; margin-bottom:8px; }
+  .goal-name { font-size:0.85rem; font-weight:500; }
+  .goal-val { font-size:0.82rem; color:var(--muted); font-family:var(--font-mono); }
+  .goal-bar { height:4px; background:var(--bg); border-radius:50px; overflow:hidden; }
+  .goal-fill { height:100%; border-radius:50px; }
+
+  /* TESTIMONIALS */
+  .testimonials { background: var(--bg2); }
+  .testimonials-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; margin-top:4rem; }
+  .testi-card { background:var(--surface); border:1px solid var(--border); border-radius:16px; padding:2rem; }
+  .testi-quote { font-size:0.9rem; line-height:1.8; color:var(--text); margin-bottom:1.5rem; }
+  .testi-author { display:flex; align-items:center; gap:12px; }
+  .testi-avatar { width:40px; height:40px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:0.85rem; }
+  .testi-name { font-size:0.875rem; font-weight:600; }
+  .testi-role { font-size:0.75rem; color:var(--muted); }
+  .stars { color: var(--amber); font-size:0.8rem; margin-bottom:1rem; letter-spacing:2px; }
+
+  /* CTA */
+  .cta-section { text-align:center; padding:8rem 4rem; position:relative; overflow:hidden; }
+  .cta-section::before { content:''; position:absolute; inset:0; background: radial-gradient(ellipse 60% 60% at 50% 50%, rgba(124,92,252,0.15) 0%, transparent 70%); }
+  .cta-section h2 { font-family:var(--font-display); font-size:clamp(3rem,7vw,7rem); line-height:0.95; margin-bottom:2rem; position:relative; z-index:1; }
+  .cta-section p { color:var(--muted); font-size:1rem; max-width:500px; margin:0 auto 3rem; position:relative; z-index:1; line-height:1.75; }
+
+  /* FOOTER */
+  footer { border-top:1px solid var(--border); padding:3rem 4rem; display:flex; justify-content:space-between; align-items:center; }
+  .footer-logo { font-family:var(--font-display); font-size:1.5rem; letter-spacing:2px; color:var(--accent); }
+  .footer-logo span { color:var(--accent2); }
+  .footer-links { display:flex; gap:2rem; }
+  .footer-links a { color:var(--muted); text-decoration:none; font-size:0.82rem; transition:color 0.2s; }
+  .footer-links a:hover { color:var(--text); }
+  .footer-copy { color:var(--muted); font-size:0.75rem; }
+
+  /* PAGE VIEWS */
+  .page-view { display:none; }
+  .page-view.active { display:block; }
+
+  /* ANIMATIONS */
+  .fade-in { opacity:0; transform:translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .fade-in.visible { opacity:1; transform:translateY(0); }
+
+  /* RESPONSIVE */
+  @media (max-width:900px) {
+    nav { padding:1rem 1.5rem; }
+    .nav-links { display:none; }
+    section { padding:4rem 1.5rem; }
+    .hero { padding:7rem 1.5rem 3rem; }
+    .kpi-grid { grid-template-columns:repeat(2,1fr); }
+    .dash-main-grid { grid-template-columns:1fr; }
+    .results-grid, .pricing-grid, .testimonials-grid { grid-template-columns:1fr; }
+    .result-card.featured { grid-column:span 1; }
+    .process-steps { grid-template-columns:repeat(2,1fr); }
+    .hero-stats { gap:1.5rem; }
+    .process-steps::before { display:none; }
+    footer { flex-direction:column; gap:1.5rem; text-align:center; }
+    .footer-links { flex-wrap:wrap; justify-content:center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">Nexus<span>Grow</span></div>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#results">Results</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#testimonials">Clients</a></li>
+  </ul>
+  <div style="display:flex;gap:0.5rem;align-items:center;">
+    <button class="nav-tab active" onclick="showPage('landing')">Home</button>
+    <button class="nav-tab" onclick="showPage('dashboard')">Dashboard</button>
+    <button class="nav-cta" onclick="document.querySelector('.cta-section').scrollIntoView({behavior:'smooth'})">Get Started</button>
+  </div>
+</nav>
+
+<!-- LANDING PAGE -->
+<div id="landing-page" class="page-view active">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-grid-bg"></div>
+    <div class="hero-glow"></div>
+    <div class="hero-glow2"></div>
+    <div class="hero-tag">India's #1 Growth Agency</div>
+    <h1>
+      WE GROW
+      <span class="line2">BRANDS</span>
+      <span class="line3">that dominate the digital world</span>
+    </h1>
+    <p class="hero-sub">From zero to market leader — we handle SEO, social media, lead generation, and full-stack digital scaling for ambitious businesses ready to win.</p>
+    <div class="hero-actions">
+      <button class="btn-primary" onclick="showPage('dashboard');setTimeout(()=>{document.getElementById('dashboard-page').scrollIntoView({behavior:'smooth'})},100)">View My Dashboard →</button>
+      <button class="btn-outline" onclick="document.getElementById('services').scrollIntoView({behavior:'smooth'})">Explore Services</button>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-item"><div class="stat-num">500+</div><div class="stat-label">Brands Scaled</div></div>
+      <div class="stat-item"><div class="stat-num">12M+</div><div class="stat-label">Leads Generated</div></div>
+      <div class="stat-item"><div class="stat-num">8.4×</div><div class="stat-label">Avg. ROI</div></div>
+    </div>
+  </section>
+
+  <!-- MARQUEE -->
+  <div class="marquee-wrap">
+    <div class="marquee-track">
+      <span class="marquee-item">Search Engine Optimization</span>
+      <span class="marquee-item">Social Media Management</span>
+      <span class="marquee-item">Lead Generation</span>
+      <span class="marquee-item">Paid Advertising</span>
+      <span class="marquee-item">Content Strategy</span>
+      <span class="marquee-item">Business Scaling</span>
+      <span class="marquee-item">Brand Identity</span>
+      <span class="marquee-item">Email Campaigns</span>
+      <span class="marquee-item">Search Engine Optimization</span>
+      <span class="marquee-item">Social Media Management</span>
+      <span class="marquee-item">Lead Generation</span>
+      <span class="marquee-item">Paid Advertising</span>
+      <span class="marquee-item">Content Strategy</span>
+      <span class="marquee-item">Business Scaling</span>
+      <span class="marquee-item">Brand Identity</span>
+      <span class="marquee-item">Email Campaigns</span>
+    </div>
+  </div>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="section-label">What We Do</div>
+    <h2 class="section-title">FULL-STACK<br>DIGITAL POWER</h2>
+    <p class="section-sub">Every solution your brand needs to dominate search, social, and sales — under one roof.</p>
+
+    <div class="services-grid fade-in">
+      <div class="service-card" style="--card-color:#00e5ff">
+        <div class="service-icon">🔍</div>
+        <div class="service-name">SEO MASTERY</div>
+        <p class="service-desc">Rank #1 on Google with technical SEO audits, keyword domination strategies, backlink authority building, and content optimization that converts.</p>
+        <div class="service-tags">
+          <span class="tag">Technical SEO</span><span class="tag">Link Building</span><span class="tag">On-Page</span><span class="tag">Local SEO</span>
+        </div>
+        <div class="service-num">01</div>
+      </div>
+      <div class="service-card" style="--card-color:#a855f7">
+        <div class="service-icon">📱</div>
+        <div class="service-name">SOCIAL MEDIA</div>
+        <p class="service-desc">End-to-end management of Instagram, LinkedIn, Twitter/X, Facebook & YouTube. Strategy, content creation, scheduling, engagement & growth hacking.</p>
+        <div class="service-tags">
+          <span class="tag">Instagram</span><span class="tag">LinkedIn</span><span class="tag">Reels</span><span class="tag">Community</span>
+        </div>
+        <div class="service-num">02</div>
+      </div>
+      <div class="service-card" style="--card-color:#00e084">
+        <div class="service-icon">🎯</div>
+        <div class="service-name">LEAD GENERATION</div>
+        <p class="service-desc">Data-driven lead funnels that attract, capture, and convert high-intent prospects. From Meta ads to landing pages to CRM automation.</p>
+        <div class="service-tags">
+          <span class="tag">Meta Ads</span><span class="tag">Funnels</span><span class="tag">CRM</span><span class="tag">Email Nurture</span>
+        </div>
+        <div class="service-num">03</div>
+      </div>
+      <div class="service-card" style="--card-color:#ff6b6b">
+        <div class="service-icon">📈</div>
+        <div class="service-name">BUSINESS SCALING</div>
+        <p class="service-desc">Full growth strategy: market expansion, revenue optimization, team enablement and performance systems to 10× your business systematically.</p>
+        <div class="service-tags">
+          <span class="tag">Growth Hacking</span><span class="tag">Automation</span><span class="tag">Analytics</span><span class="tag">OKRs</span>
+        </div>
+        <div class="service-num">04</div>
+      </div>
+      <div class="service-card" style="--card-color:#ffb547">
+        <div class="service-icon">✍️</div>
+        <div class="service-name">CONTENT STRATEGY</div>
+        <p class="service-desc">Blogs, videos, infographics, and thought-leadership content engineered to educate, engage, and convert your target audience at scale.</p>
+        <div class="service-tags">
+          <span class="tag">Copywriting</span><span class="tag">Video Scripts</span><span class="tag">SEO Blogs</span><span class="tag">Visual</span>
+        </div>
+        <div class="service-num">05</div>
+      </div>
+      <div class="service-card" style="--card-color:#06b6d4">
+        <div class="service-icon">💰</div>
+        <div class="service-name">PAID ADVERTISING</div>
+        <p class="service-desc">ROI-obsessed paid campaigns across Google, Meta, and LinkedIn. Every rupee tracked, every creative tested, every conversion optimized.</p>
+        <div class="service-tags">
+          <span class="tag">Google Ads</span><span class="tag">Meta Ads</span><span class="tag">Retargeting</span><span class="tag">A/B Testing</span>
+        </div>
+        <div class="service-num">06</div>
+      </div>
+    </div>
+
+    <!-- PROCESS -->
+    <div class="process-wrap fade-in">
+      <div class="section-label">How It Works</div>
+      <h3 style="font-family:var(--font-display); font-size:2rem; letter-spacing:1px; margin-bottom:0.5rem;">OUR 4-STEP GROWTH ENGINE</h3>
+      <div class="process-steps">
+        <div class="process-step">
+          <div class="step-circle">01</div>
+          <div class="step-title">Discovery Audit</div>
+          <p class="step-desc">We deep-dive into your brand, competitors, and market position to find untapped growth opportunities.</p>
+        </div>
+        <div class="process-step">
+          <div class="step-circle">02</div>
+          <div class="step-title">Strategy Build</div>
+          <p class="step-desc">A custom 90-day roadmap built around your specific goals, audience, and budget — not a template.</p>
+        </div>
+        <div class="process-step">
+          <div class="step-circle">03</div>
+          <div class="step-title">Execute & Test</div>
+          <p class="step-desc">Rapid execution with weekly sprints, constant A/B testing, and real-time pivots based on data.</p>
+        </div>
+        <div class="process-step">
+          <div class="step-circle">04</div>
+          <div class="step-title">Scale & Report</div>
+          <p class="step-desc">Double down on what works, eliminate what doesn't, and scale results month over month.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESULTS -->
+  <section id="results" style="background:var(--bg2);">
+    <div class="section-label">Real Impact</div>
+    <h2 class="section-title">THE NUMBERS<br>DON'T LIE</h2>
+    <p class="section-sub">Our campaigns consistently outperform industry benchmarks across every channel.</p>
+    <div class="results-grid fade-in">
+      <div class="result-card featured">
+        <div class="result-label">Average Client Revenue Growth</div>
+        <div class="result-metric">₹2.4 CR</div>
+        <div class="result-desc">Average annual revenue added for clients in their first year with NexusGrow — measured across 200+ active partnerships.</div>
+        <span class="result-badge">↑ 340% YoY</span>
+      </div>
+      <div class="result-card">
+        <div class="result-label">SEO Traffic Growth</div>
+        <div class="result-metric" style="color:var(--accent2)">847%</div>
+        <div class="result-desc">Average organic traffic increase within 6 months of our SEO engagement.</div>
+        <span class="result-badge">Avg. Position: #2.3</span>
+      </div>
+      <div class="result-card">
+        <div class="result-label">Lead Cost Reduction</div>
+        <div class="result-metric" style="color:var(--amber)">68%</div>
+        <div class="result-desc">Average reduction in cost-per-lead after optimizing paid campaigns and funnel flows.</div>
+        <span class="result-badge">↑ 5× Conversion Rate</span>
+      </div>
+      <div class="result-card">
+        <div class="result-label">Social Follower Growth</div>
+        <div class="result-metric" style="color:var(--accent3)">120K+</div>
+        <div class="result-desc">Average followers gained per brand per year with our full social media management service.</div>
+        <span class="result-badge">4.7% Avg. Engagement</span>
+      </div>
+      <div class="result-card">
+        <div class="result-label">Return on Ad Spend</div>
+        <div class="result-metric" style="color:var(--green)">8.4×</div>
+        <div class="result-desc">Average ROAS across all paid advertising channels for our growth-tier clients.</div>
+        <span class="result-badge">Industry Avg: 2.1×</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section id="pricing">
+    <div class="section-label">Transparent Pricing</div>
+    <h2 class="section-title">INVEST IN<br>YOUR GROWTH</h2>
+    <p class="section-sub">Flexible plans built for businesses of every stage. No hidden fees, no lock-ins.</p>
+    <div class="pricing-grid fade-in">
+      <div class="plan-card">
+        <div class="plan-name">STARTER</div>
+        <div class="plan-price">₹29,999<span>/mo</span></div>
+        <p class="plan-desc">Perfect for small businesses taking their first steps into digital growth.</p>
+        <ul class="plan-features">
+          <li class="yes">SEO audit & on-page optimization</li>
+          <li class="yes">2 social media platforms</li>
+          <li class="yes">12 posts/month</li>
+          <li class="yes">Monthly performance report</li>
+          <li class="yes">Google Ads setup (up to ₹50K budget)</li>
+          <li>Lead funnel creation</li>
+          <li>Dedicated account manager</li>
+        </ul>
+        <button class="btn-outline" style="width:100%;border-radius:10px;" onclick="document.querySelector('.cta-section').scrollIntoView({behavior:'smooth'})">Get Started</button>
+      </div>
+      <div class="plan-card popular">
+        <span class="popular-badge">Most Popular</span>
+        <div class="plan-name">GROWTH</div>
+        <div class="plan-price">₹79,999<span>/mo</span></div>
+        <p class="plan-desc">For scaling businesses ready to dominate their market and multiply revenue.</p>
+        <ul class="plan-features">
+          <li class="yes">Full technical SEO + link building</li>
+          <li class="yes">4 social media platforms</li>
+          <li class="yes">30 posts/month + Reels</li>
+          <li class="yes">Weekly reports + live dashboard</li>
+          <li class="yes">Multi-channel paid ads</li>
+          <li class="yes">Lead generation funnel</li>
+          <li class="yes">Dedicated account manager</li>
+        </ul>
+        <button class="btn-primary" style="width:100%;border-radius:10px;" onclick="document.querySelector('.cta-section').scrollIntoView({behavior:'smooth'})">Get Started →</button>
+      </div>
+      <div class="plan-card">
+        <div class="plan-name">ENTERPRISE</div>
+        <div class="plan-price">Custom<span> pricing</span></div>
+        <p class="plan-desc">Full-agency partnership for enterprises serious about market leadership.</p>
+        <ul class="plan-features">
+          <li class="yes">Everything in Growth +</li>
+          <li class="yes">Full marketing team dedicated</li>
+          <li class="yes">Custom content production</li>
+          <li class="yes">Real-time analytics platform</li>
+          <li class="yes">CMO-level strategy sessions</li>
+          <li class="yes">PR & influencer outreach</li>
+          <li class="yes">24/7 priority support</li>
+        </ul>
+        <button class="btn-outline" style="width:100%;border-radius:10px;" onclick="document.querySelector('.cta-section').scrollIntoView({behavior:'smooth'})">Talk to Us</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section id="testimonials" class="testimonials">
+    <div class="section-label">Client Stories</div>
+    <h2 class="section-title">REAL BRANDS,<br>REAL GROWTH</h2>
+    <div class="testimonials-grid fade-in">
+      <div class="testi-card">
+        <div class="stars">★★★★★</div>
+        <p class="testi-quote">"NexusGrow took our e-commerce brand from 2,000 monthly visitors to over 90,000 in eight months. Our revenue tripled. They don't just run campaigns — they think like your co-founders."</p>
+        <div class="testi-author">
+          <div class="testi-avatar" style="background:rgba(0,229,255,0.1);color:var(--accent);">AR</div>
+          <div>
+            <div class="testi-name">Aryan Rathore</div>
+            <div class="testi-role">Founder, StyleKart India</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="stars">★★★★★</div>
+        <p class="testi-quote">"The lead generation system they built us generates 400+ qualified leads per month on autopilot. Our sales team finally has a full pipeline. ROI in the first month itself."</p>
+        <div class="testi-author">
+          <div class="testi-avatar" style="background:rgba(124,92,252,0.12);color:var(--accent2);">PM</div>
+          <div>
+            <div class="testi-name">Priya Mehta</div>
+            <div class="testi-role">CEO, BuildRight Realty</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="stars">★★★★★</div>
+        <p class="testi-quote">"Went from page 8 on Google to position 1 for our primary keyword in 5 months. Their SEO team is hands-down the best I've worked with. Business completely transformed."</p>
+        <div class="testi-author">
+          <div class="testi-avatar" style="background:rgba(0,224,132,0.1);color:var(--green);">KS</div>
+          <div>
+            <div class="testi-name">Kiran Shah</div>
+            <div class="testi-role">Director, TechEdge Solutions</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <h2>READY TO<br><span style="color:var(--accent2)">DOMINATE?</span></h2>
+    <p>Join 500+ brands that trusted NexusGrow to turn their digital presence into a growth engine. First consultation is free.</p>
+    <button class="btn-primary" style="font-size:1rem;padding:1rem 3rem;" onclick="document.getElementById('contact-form').scrollIntoView({behavior:'smooth'})">Book Free Strategy Call →</button>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact-form" style="background:var(--bg2); padding:5rem 4rem;">
+    <div style="max-width:600px; margin:0 auto;">
+      <div class="section-label">Get In Touch</div>
+      <h2 class="section-title" style="font-size:3rem; margin-bottom:2rem;">LET'S TALK</h2>
+      <div style="display:flex; flex-direction:column; gap:1rem;">
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem;">
+          <div>
+            <label style="display:block;font-size:0.78rem;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;">Your Name</label>
+            <input type="text" placeholder="Rahul Sharma" style="width:100%;padding:0.85rem 1rem;background:var(--surface);border:1px solid var(--border2);border-radius:10px;color:var(--text);font-family:var(--font-body);font-size:0.9rem;outline:none;">
+          </div>
+          <div>
+            <label style="display:block;font-size:0.78rem;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;">Email</label>
+            <input type="email" placeholder="you@brand.com" style="width:100%;padding:0.85rem 1rem;background:var(--surface);border:1px solid var(--border2);border-radius:10px;color:var(--text);font-family:var(--font-body);font-size:0.9rem;outline:none;">
+          </div>
+        </div>
+        <div>
+          <label style="display:block;font-size:0.78rem;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;">Company & Website</label>
+          <input type="text" placeholder="YourBrand — yourbrand.com" style="width:100%;padding:0.85rem 1rem;background:var(--surface);border:1px solid var(--border2);border-radius:10px;color:var(--text);font-family:var(--font-body);font-size:0.9rem;outline:none;">
+        </div>
+        <div>
+          <label style="display:block;font-size:0.78rem;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;">What do you need help with?</label>
+          <select style="width:100%;padding:0.85rem 1rem;background:var(--surface);border:1px solid var(--border2);border-radius:10px;color:var(--text);font-family:var(--font-body);font-size:0.9rem;outline:none;">
+            <option>SEO & Organic Growth</option>
+            <option>Social Media Management</option>
+            <option>Lead Generation</option>
+            <option>Paid Advertising</option>
+            <option>Full-Stack Growth Package</option>
+            <option>Business Scaling Strategy</option>
+          </select>
+        </div>
+        <div>
+          <label style="display:block;font-size:0.78rem;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;">Tell us about your goals</label>
+          <textarea rows="4" placeholder="We want to grow our organic traffic by 5× and generate 200 qualified leads/month by end of year..." style="width:100%;padding:0.85rem 1rem;background:var(--surface);border:1px solid var(--border2);border-radius:10px;color:var(--text);font-family:var(--font-body);font-size:0.9rem;outline:none;resize:vertical;"></textarea>
+        </div>
+        <button class="btn-primary" style="align-self:flex-start;padding:0.9rem 2.5rem;" onclick="this.textContent='Message Sent! ✓'; this.style.background='linear-gradient(135deg,var(--green),#00b870)'; this.disabled=true;">Send Message →</button>
+      </div>
+    </div>
+  </section>
+
+</div><!-- end landing -->
+
+<!-- DASHBOARD PAGE -->
+<div id="dashboard-page" class="page-view">
+  <div style="padding:6rem 4rem 4rem;">
+
+    <!-- Header -->
+    <div class="dashboard-header">
+      <div class="dash-greeting">
+        <h2 class="dash-greeting" style="font-family:var(--font-display);font-size:2.2rem;">GOOD MORNING, <span style="color:var(--accent)">RAHUL</span> 👋</h2>
+        <p style="color:var(--muted);font-size:0.875rem;margin-top:4px;">Here's your growth snapshot for April 2025 · NexusGrow Growth Plan</p>
+      </div>
+      <div class="dash-period">
+        <button class="period-btn" onclick="setPeriod(this,'7d')">7 Days</button>
+        <button class="period-btn active" onclick="setPeriod(this,'30d')">30 Days</button>
+        <button class="period-btn" onclick="setPeriod(this,'90d')">Quarter</button>
+        <button class="period-btn" onclick="setPeriod(this,'1y')">Year</button>
+      </div>
+    </div>
+
+    <!-- KPI Grid -->
+    <div class="kpi-grid">
+      <div class="kpi-card">
+        <div class="kpi-label">Organic Traffic</div>
+        <div class="kpi-value" style="color:var(--accent)">48,291</div>
+        <div class="kpi-change up">↑ 34.2% vs last month</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Leads Generated</div>
+        <div class="kpi-value" style="color:var(--accent2)">1,842</div>
+        <div class="kpi-change up">↑ 22.8% vs last month</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Revenue Attributed</div>
+        <div class="kpi-value" style="color:var(--green)">₹14.7L</div>
+        <div class="kpi-change up">↑ 41.5% vs last month</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Ad Spend ROAS</div>
+        <div class="kpi-value" style="color:var(--amber)">7.9×</div>
+        <div class="kpi-change up">↑ 1.2× vs last month</div>
+      </div>
+    </div>
+
+    <!-- Main charts grid -->
+    <div class="dash-main-grid">
+      <!-- Traffic Chart -->
+      <div class="chart-card">
+        <div class="chart-card-header">
+          <div>
+            <div class="chart-title">Traffic & Conversions Overview</div>
+            <div class="chart-subtitle">Daily visitors and lead conversions — last 30 days</div>
+          </div>
+          <div class="chart-legend">
+            <span class="legend-item"><span class="legend-dot" style="background:var(--accent)"></span>Traffic</span>
+            <span class="legend-item" style="margin-left:8px;"><span class="legend-dot" style="background:var(--accent2)"></span>Leads</span>
+          </div>
+        </div>
+        <svg class="chart-svg" viewBox="0 0 540 160" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="tGrad" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#00e5ff" stop-opacity="0.25"/>
+              <stop offset="100%" stop-color="#00e5ff" stop-opacity="0"/>
+            </linearGradient>
+            <linearGradient id="lGrad" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#7c5cfc" stop-opacity="0.25"/>
+              <stop offset="100%" stop-color="#7c5cfc" stop-opacity="0"/>
+            </linearGradient>
+          </defs>
+          <!-- Grid lines -->
+          <line x1="40" y1="20" x2="540" y2="20" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+          <line x1="40" y1="60" x2="540" y2="60" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+          <line x1="40" y1="100" x2="540" y2="100" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+          <line x1="40" y1="140" x2="540" y2="140" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+          <!-- Y labels -->
+          <text x="32" y="24" fill="#7a8aaa" font-size="9" text-anchor="end">60K</text>
+          <text x="32" y="64" fill="#7a8aaa" font-size="9" text-anchor="end">40K</text>
+          <text x="32" y="104" fill="#7a8aaa" font-size="9" text-anchor="end">20K</text>
+          <text x="32" y="144" fill="#7a8aaa" font-size="9" text-anchor="end">0</text>
+          <!-- Traffic area -->
+          <path d="M40,120 C70,110 100,100 130,95 C160,88 190,75 220,65 C250,55 280,60 310,52 C340,44 370,35 400,30 C430,25 460,28 490,22 C510,18 530,20 540,18 L540,140 L40,140 Z" fill="url(#tGrad)"/>
+          <path d="M40,120 C70,110 100,100 130,95 C160,88 190,75 220,65 C250,55 280,60 310,52 C340,44 370,35 400,30 C430,25 460,28 490,22 C510,18 530,20 540,18" fill="none" stroke="#00e5ff" stroke-width="2" stroke-linecap="round"/>
+          <!-- Leads area -->
+          <path d="M40,135 C70,132 100,130 130,128 C160,125 190,120 220,115 C250,110 280,112 310,107 C340,102 370,95 400,90 C430,85 460,88 490,82 C510,78 530,80 540,77 L540,140 L40,140 Z" fill="url(#lGrad)"/>
+          <path d="M40,135 C70,132 100,130 130,128 C160,125 190,120 220,115 C250,110 280,112 310,107 C340,102 370,95 400,90 C430,85 460,88 490,82 C510,78 530,80 540,77" fill="none" stroke="#7c5cfc" stroke-width="2" stroke-linecap="round"/>
+          <!-- Highlight dot -->
+          <circle cx="400" cy="30" r="4" fill="#00e5ff"/>
+          <circle cx="400" cy="30" r="8" fill="none" stroke="#00e5ff" stroke-opacity="0.3"/>
+          <!-- X labels -->
+          <text x="40" y="156" fill="#7a8aaa" font-size="8" text-anchor="middle">Apr 1</text>
+          <text x="130" y="156" fill="#7a8aaa" font-size="8" text-anchor="middle">Apr 8</text>
+          <text x="220" y="156" fill="#7a8aaa" font-size="8" text-anchor="middle">Apr 15</text>
+          <text x="310" y="156" fill="#7a8aaa" font-size="8" text-anchor="middle">Apr 22</text>
+          <text x="400" y="156" fill="#7a8aaa" font-size="8" text-anchor="middle">Apr 29</text>
+          <text x="490" y="156" fill="#7a8aaa" font-size="8" text-anchor="middle">May 6</text>
+        </svg>
+      </div>
+
+      <!-- Recent Activity -->
+      <div class="chart-card">
+        <div class="chart-card-header">
+          <div>
+            <div class="chart-title">Live Activity Feed</div>
+            <div class="chart-subtitle">Updates from your campaigns</div>
+          </div>
+          <div style="width:8px;height:8px;border-radius:50%;background:var(--green);animation:pulse 2s infinite;"></div>
+        </div>
+        <div class="activity-list">
+          <div class="activity-item">
+            <div class="activity-dot" style="background:var(--green)"></div>
+            <div>
+              <div class="activity-text">Keyword "digital marketing ahmedabad" reached <strong>position #1</strong> on Google</div>
+              <div class="activity-time">2 hours ago</div>
+            </div>
+          </div>
+          <div class="activity-item">
+            <div class="activity-dot" style="background:var(--accent2)"></div>
+            <div>
+              <div class="activity-text">Instagram Reel hit <strong>42K views</strong> — boosting to paid</div>
+              <div class="activity-time">5 hours ago</div>
+            </div>
+          </div>
+          <div class="activity-item">
+            <div class="activity-dot" style="background:var(--accent)"></div>
+            <div>
+              <div class="activity-text"><strong>38 new leads</strong> captured via Google Ads funnel today</div>
+              <div class="activity-time">Today, 11:20 AM</div>
+            </div>
+          </div>
+          <div class="activity-item">
+            <div class="activity-dot" style="background:var(--amber)"></div>
+            <div>
+              <div class="activity-text">April content calendar published — <strong>30 posts scheduled</strong></div>
+              <div class="activity-time">Yesterday</div>
+            </div>
+          </div>
+          <div class="activity-item">
+            <div class="activity-dot" style="background:var(--accent3)"></div>
+            <div>
+              <div class="activity-text">Domain Authority improved <strong>DA 28 → DA 41</strong> this month</div>
+              <div class="activity-time">2 days ago</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Second row -->
+    <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:1.5rem; margin-bottom:1.5rem;">
+      <!-- Channel Breakdown -->
+      <div class="chart-card">
+        <div class="chart-card-header">
+          <div>
+            <div class="chart-title">Traffic by Channel</div>
+            <div class="chart-subtitle">Source breakdown this month</div>
+          </div>
+        </div>
+        <div class="channel-bars">
+          <div class="channel-row">
+            <div class="channel-info"><span class="channel-name">Organic Search</span><span class="channel-pct">41%</span></div>
+            <div class="bar-track"><div class="bar-fill" style="width:41%;background:var(--accent);"></div></div>
+          </div>
+          <div class="channel-row">
+            <div class="channel-info"><span class="channel-name">Paid Ads</span><span class="channel-pct">28%</span></div>
+            <div class="bar-track"><div class="bar-fill" style="width:28%;background:var(--accent2);"></div></div>
+          </div>
+          <div class="channel-row">
+            <div class="channel-info"><span class="channel-name">Social Media</span><span class="channel-pct">18%</span></div>
+            <div class="bar-track"><div class="bar-fill" style="width:18%;background:var(--amber);"></div></div>
+          </div>
+          <div class="channel-row">
+            <div class="channel-info"><span class="channel-name">Referral</span><span class="channel-pct">8%</span></div>
+            <div class="bar-track"><div class="bar-fill" style="width:8%;background:var(--green);"></div></div>
+          </div>
+          <div class="channel-row">
+            <div class="channel-info"><span class="channel-name">Direct</span><span class="channel-pct">5%</span></div>
+            <div class="bar-track"><div class="bar-fill" style="width:5%;background:var(--accent3);"></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SEO Rankings -->
+      <div class="chart-card">
+        <div class="chart-card-header">
+          <div>
+            <div class="chart-title">Top SEO Rankings</div>
+            <div class="chart-subtitle">Primary keyword positions</div>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:10px;margin-top:4px;">
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:8px;background:var(--bg2);border-radius:8px;">
+            <span style="font-size:0.8rem;color:var(--text);">digital marketing ahmedabad</span>
+            <span style="font-family:var(--font-mono);font-size:0.75rem;color:var(--green);background:rgba(0,224,132,0.1);padding:2px 8px;border-radius:50px;">#1</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:8px;background:var(--bg2);border-radius:8px;">
+            <span style="font-size:0.8rem;color:var(--text);">seo agency gujarat</span>
+            <span style="font-family:var(--font-mono);font-size:0.75rem;color:var(--green);background:rgba(0,224,132,0.1);padding:2px 8px;border-radius:50px;">#2</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:8px;background:var(--bg2);border-radius:8px;">
+            <span style="font-size:0.8rem;color:var(--text);">social media management india</span>
+            <span style="font-family:var(--font-mono);font-size:0.75rem;color:var(--accent);background:rgba(0,229,255,0.1);padding:2px 8px;border-radius:50px;">#4</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:8px;background:var(--bg2);border-radius:8px;">
+            <span style="font-size:0.8rem;color:var(--text);">lead generation company</span>
+            <span style="font-family:var(--font-mono);font-size:0.75rem;color:var(--accent);background:rgba(0,229,255,0.1);padding:2px 8px;border-radius:50px;">#5</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:8px;background:var(--bg2);border-radius:8px;">
+            <span style="font-size:0.8rem;color:var(--text);">google ads agency india</span>
+            <span style="font-family:var(--font-mono);font-size:0.75rem;color:var(--amber);background:rgba(255,181,71,0.1);padding:2px 8px;border-radius:50px;">#8</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Monthly Goals -->
+      <div class="chart-card">
+        <div class="chart-card-header">
+          <div>
+            <div class="chart-title">Monthly Goals</div>
+            <div class="chart-subtitle">Progress toward April targets</div>
+          </div>
+        </div>
+        <div class="goals-list">
+          <div class="goal-item">
+            <div class="goal-header">
+              <span class="goal-name">Organic Traffic</span>
+              <span class="goal-val">48.3K / 50K</span>
+            </div>
+            <div class="goal-bar"><div class="goal-fill" style="width:97%;background:linear-gradient(90deg,var(--accent),#00b3cc);"></div></div>
+          </div>
+          <div class="goal-item">
+            <div class="goal-header">
+              <span class="goal-name">Leads Generated</span>
+              <span class="goal-val">1,842 / 2,000</span>
+            </div>
+            <div class="goal-bar"><div class="goal-fill" style="width:92%;background:linear-gradient(90deg,var(--accent2),#9d7ef8);"></div></div>
+          </div>
+          <div class="goal-item">
+            <div class="goal-header">
+              <span class="goal-name">New Backlinks</span>
+              <span class="goal-val">78 / 100</span>
+            </div>
+            <div class="goal-bar"><div class="goal-fill" style="width:78%;background:linear-gradient(90deg,var(--green),#00b870);"></div></div>
+          </div>
+          <div class="goal-item">
+            <div class="goal-header">
+              <span class="goal-name">Social Reach</span>
+              <span class="goal-val">280K / 350K</span>
+            </div>
+            <div class="goal-bar"><div class="goal-fill" style="width:80%;background:linear-gradient(90deg,var(--amber),#f0a020);"></div></div>
+          </div>
+          <div class="goal-item">
+            <div class="goal-header">
+              <span class="goal-name">Ad ROAS</span>
+              <span class="goal-val">7.9× / 8×</span>
+            </div>
+            <div class="goal-bar"><div class="goal-fill" style="width:99%;background:linear-gradient(90deg,var(--accent3),#e05050);"></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Social + Upcoming Tasks -->
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:1.5rem; margin-bottom:1.5rem;">
+      <!-- Social Stats -->
+      <div class="chart-card">
+        <div class="chart-card-header">
+          <div>
+            <div class="chart-title">Social Media Performance</div>
+            <div class="chart-subtitle">Across all managed platforms</div>
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:4px;">
+          <div style="background:var(--bg2);border-radius:10px;padding:1rem;text-align:center;">
+            <div style="font-size:0.7rem;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;">Instagram</div>
+            <div style="font-family:var(--font-display);font-size:1.8rem;color:#E1306C;">28.4K</div>
+            <div style="font-size:0.72rem;color:var(--green);">↑ 4,200 followers</div>
+            <div style="font-size:0.72rem;color:var(--muted);margin-top:2px;">4.8% engagement</div>
+          </div>
+          <div style="background:var(--bg2);border-radius:10px;padding:1rem;text-align:center;">
+            <div style="font-size:0.7rem;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;">LinkedIn</div>
+            <div style="font-family:var(--font-display);font-size:1.8rem;color:#0A66C2;">12.1K</div>
+            <div style="font-size:0.72rem;color:var(--green);">↑ 1,800 followers</div>
+            <div style="font-size:0.72rem;color:var(--muted);margin-top:2px;">5.2% engagement</div>
+          </div>
+          <div style="background:var(--bg2);border-radius:10px;padding:1rem;text-align:center;">
+            <div style="font-size:0.7rem;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;">YouTube</div>
+            <div style="font-family:var(--font-display);font-size:1.8rem;color:#FF0000;">8,900</div>
+            <div style="font-size:0.72rem;color:var(--green);">↑ 920 subs</div>
+            <div style="font-size:0.72rem;color:var(--muted);margin-top:2px;">62K views/mo</div>
+          </div>
+          <div style="background:var(--bg2);border-radius:10px;padding:1rem;text-align:center;">
+            <div style="font-size:0.7rem;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;">Facebook</div>
+            <div style="font-family:var(--font-display);font-size:1.8rem;color:#1877F2;">19.2K</div>
+            <div style="font-size:0.72rem;color:var(--green);">↑ 2,100 followers</div>
+            <div style="font-size:0.72rem;color:var(--muted);margin-top:2px;">3.4% engagement</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Upcoming Deliverables -->
+      <div class="chart-card">
+        <div class="chart-card-header">
+          <div>
+            <div class="chart-title">Upcoming Deliverables</div>
+            <div class="chart-subtitle">Your team's scheduled outputs</div>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:0.75rem;margin-top:4px;">
+          <div style="display:flex;align-items:center;gap:12px;padding:10px;background:var(--bg2);border-radius:8px;border-left:3px solid var(--accent2);">
+            <div style="flex:1;">
+              <div style="font-size:0.82rem;font-weight:500;">May Content Calendar</div>
+              <div style="font-size:0.72rem;color:var(--muted);">30 posts across all platforms</div>
+            </div>
+            <div style="font-size:0.72rem;color:var(--muted);font-family:var(--font-mono);">Apr 20</div>
+          </div>
+          <div style="display:flex;align-items:center;gap:12px;padding:10px;background:var(--bg2);border-radius:8px;border-left:3px solid var(--accent);">
+            <div style="flex:1;">
+              <div style="font-size:0.82rem;font-weight:500;">Monthly SEO Report</div>
+              <div style="font-size:0.72rem;color:var(--muted);">Rankings, traffic, backlinks analysis</div>
+            </div>
+            <div style="font-size:0.72rem;color:var(--muted);font-family:var(--font-mono);">Apr 25</div>
+          </div>
+          <div style="display:flex;align-items:center;gap:12px;padding:10px;background:var(--bg2);border-radius:8px;border-left:3px solid var(--green);">
+            <div style="flex:1;">
+              <div style="font-size:0.82rem;font-weight:500;">Q2 Growth Strategy Call</div>
+              <div style="font-size:0.72rem;color:var(--muted);">Roadmap review with your account manager</div>
+            </div>
+            <div style="font-size:0.72rem;color:var(--muted);font-family:var(--font-mono);">Apr 28</div>
+          </div>
+          <div style="display:flex;align-items:center;gap:12px;padding:10px;background:var(--bg2);border-radius:8px;border-left:3px solid var(--amber);">
+            <div style="flex:1;">
+              <div style="font-size:0.82rem;font-weight:500;">Google Ads Optimization</div>
+              <div style="font-size:0.72rem;color:var(--muted);">Bid strategy review + new ad creatives</div>
+            </div>
+            <div style="font-size:0.72rem;color:var(--muted);font-family:var(--font-mono);">May 1</div>
+          </div>
+          <div style="display:flex;align-items:center;gap:12px;padding:10px;background:var(--bg2);border-radius:8px;border-left:3px solid var(--accent3);">
+            <div style="flex:1;">
+              <div style="font-size:0.82rem;font-weight:500;">New Blog Articles (4×)</div>
+              <div style="font-size:0.72rem;color:var(--muted);">Long-form SEO content pieces</div>
+            </div>
+            <div style="font-size:0.72rem;color:var(--muted);font-family:var(--font-mono);">May 5</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Invoice / Package Info -->
+    <div style="background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:1.5rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1.5rem;">
+      <div>
+        <div style="font-size:0.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;">Current Plan</div>
+        <div style="font-family:var(--font-display);font-size:1.5rem;">GROWTH PLAN</div>
+        <div style="font-size:0.8rem;color:var(--muted);margin-top:2px;">Active since January 2025 · Next invoice: May 1, 2025</div>
+      </div>
+      <div style="display:flex;gap:2rem;">
+        <div style="text-align:center;">
+          <div style="font-size:0.7rem;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:4px;">Monthly Spend</div>
+          <div style="font-family:var(--font-display);font-size:1.5rem;color:var(--amber);">₹79,999</div>
+        </div>
+        <div style="text-align:center;">
+          <div style="font-size:0.7rem;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:4px;">Revenue Driven</div>
+          <div style="font-family:var(--font-display);font-size:1.5rem;color:var(--green);">₹14.7L</div>
+        </div>
+        <div style="text-align:center;">
+          <div style="font-size:0.7rem;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:4px;">ROI</div>
+          <div style="font-family:var(--font-display);font-size:1.5rem;color:var(--accent);">18.4×</div>
+        </div>
+      </div>
+      <button class="btn-outline" style="border-radius:8px;font-size:0.82rem;" onclick="showPage('landing')">← Back to Homepage</button>
+    </div>
+
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Nexus<span>Grow</span></div>
+  <div class="footer-links">
+    <a href="#">Privacy Policy</a>
+    <a href="#">Terms</a>
+    <a href="#">Case Studies</a>
+    <a href="#">Blog</a>
+    <a href="#">Careers</a>
+    <a href="#">Contact</a>
+  </div>
+  <div class="footer-copy">© 2025 NexusGrow Digital. Ahmedabad, Gujarat.</div>
+</footer>
+
+<script>
+  function showPage(page) {
+    document.querySelectorAll('.page-view').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+    document.getElementById(page + '-page').classList.add('active');
+    window.scrollTo({top:0, behavior:'smooth'});
+    const idx = page === 'landing' ? 0 : 1;
+    document.querySelectorAll('.nav-tab')[idx].classList.add('active');
+  }
+
+  function setPeriod(btn, period) {
+    document.querySelectorAll('.period-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+  }
+
+  // Scroll-triggered fade-ins
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if(e.isIntersecting) { e.target.classList.add('visible'); } });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  // Animate number counter
+  function animateCounters() {
+    document.querySelectorAll('.kpi-value').forEach(el => {
+      const target = el.textContent;
+      el.style.opacity = '0';
+      setTimeout(() => {
+        el.style.transition = 'opacity 0.5s';
+        el.style.opacity = '1';
+      }, 300);
+    });
+  }
+
+  // Input styling on hover
+  document.querySelectorAll('input, textarea, select').forEach(el => {
+    el.addEventListener('focus', () => el.style.borderColor = 'rgba(0,229,255,0.4)');
+    el.addEventListener('blur', () => el.style.borderColor = '');
+  });
+</script>
+
+</body>
+</html>
